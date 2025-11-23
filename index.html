@@ -8,16 +8,17 @@
     <style>
         /* CSS Variables for easy theming and WCAG AA compliance */
         :root {
-            --primary-blue: #0d487f;
-            --secondary-blue: #1EABC7;
-            --accent-blue: #2b5672;
-            --dark-bg: #1a1a1a;
+            --primary-blue: #1565C0;
+            --secondary-blue: #00ACC1;
+            --accent-blue: #0277BD;
+            --accent-gold: #F57C00;
+            --dark-bg: #263238;
             --light-bg: #ffffff;
             --text-dark: #212121;
             --text-light: #ffffff;
-            --gray-light: #f5f5f5;
-            --gray-medium: #757575;
-            --success-green: #2e7d32;
+            --gray-light: #F5F7FA;
+            --gray-medium: #546E7A;
+            --success-green: #00897B;
             --spacing-xs: 0.5rem;
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
@@ -60,9 +61,9 @@
 
         /* Header and Navigation */
         header {
-            background-color: var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             color: var(--text-light);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -147,11 +148,13 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-sm);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         .logo img {
             height: 50px;
             width: auto;
+            filter: brightness(1.1) drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
         .nav-menu {
@@ -167,11 +170,14 @@
             padding: var(--spacing-xs) var(--spacing-sm);
             border-radius: var(--border-radius);
             transition: var(--transition);
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
         .nav-menu a:hover,
         .nav-menu a:focus {
-            background-color: var(--secondary-blue);
+            background-color: rgba(255,255,255,0.15);
+            transform: translateY(-1px);
         }
 
         /* Hero Carousel */
@@ -311,7 +317,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background: var(--secondary-blue);
+            background: linear-gradient(90deg, var(--secondary-blue), var(--accent-gold));
             border-radius: 2px;
         }
 
@@ -331,17 +337,19 @@
         }
 
         .vm-card {
-            background: var(--gray-light);
+            background: linear-gradient(135deg, #ffffff 0%, var(--gray-light) 100%);
             padding: var(--spacing-lg);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: var(--transition);
+            border-left: 4px solid var(--secondary-blue);
         }
 
         .vm-card:hover,
         .vm-card:focus-within {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,172,193,0.15);
+            border-left-color: var(--accent-gold);
         }
 
         .vm-card h3 {
@@ -371,12 +379,18 @@
         }
 
         .college-stat {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             color: var(--text-light);
             padding: var(--spacing-lg);
             border-radius: var(--border-radius);
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+
+        .college-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         .college-stat .stat-number {
@@ -393,9 +407,10 @@
 
         .college-list {
             margin-top: var(--spacing-lg);
-            background: var(--gray-light);
+            background: linear-gradient(135deg, #ffffff, var(--gray-light));
             padding: var(--spacing-lg);
-            border-radius: var(--border-radius);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .college-list h4 {
@@ -436,20 +451,28 @@
             background: var(--light-bg);
             border-left: 4px solid var(--secondary-blue);
             padding: var(--spacing-md);
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             display: grid;
             grid-template-columns: 120px 1fr;
             gap: var(--spacing-md);
             align-items: center;
+            transition: var(--transition);
+        }
+
+        .calendar-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(0,172,193,0.15);
+            border-left-color: var(--accent-gold);
         }
 
         .calendar-date {
-            background: var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
             color: var(--text-light);
             padding: var(--spacing-sm);
-            border-radius: var(--border-radius);
+            border-radius: 12px;
             text-align: center;
+            box-shadow: 0 2px 8px rgba(21,101,192,0.2);
         }
 
         .calendar-date .month {
@@ -484,15 +507,18 @@
         .testimonial-card {
             background: var(--light-bg);
             padding: var(--spacing-lg);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             position: relative;
             transition: var(--transition);
+            border-top: 3px solid var(--secondary-blue);
         }
 
         .testimonial-card:hover,
         .testimonial-card:focus-within {
-            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 24px rgba(0,172,193,0.15);
+            transform: translateY(-5px);
+            border-top-color: var(--accent-gold);
         }
 
         .testimonial-card::before {
@@ -544,12 +570,13 @@
 
         /* Call to Action */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
             color: var(--text-light);
             padding: var(--spacing-xl);
-            border-radius: var(--border-radius);
+            border-radius: 12px;
             text-align: center;
             margin-top: var(--spacing-xl);
+            box-shadow: 0 8px 24px rgba(21, 101, 192, 0.3);
         }
 
         .cta-section h2 {
@@ -565,21 +592,24 @@
 
         .btn {
             display: inline-block;
-            padding: var(--spacing-sm) var(--spacing-lg);
-            background: var(--text-light);
-            color: var(--primary-blue);
+            padding: 1rem 2.5rem;
+            background: var(--accent-gold);
+            color: var(--text-light);
             text-decoration: none;
-            border-radius: var(--border-radius);
+            border-radius: 50px;
             font-weight: bold;
+            font-size: 1.1rem;
             transition: var(--transition);
-            border: 2px solid var(--text-light);
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 12px rgba(245, 124, 0, 0.3);
         }
 
         .btn:hover,
         .btn:focus {
-            background: transparent;
-            color: var(--text-light);
-            transform: translateY(-2px);
+            background: #FF9800;
+            border-color: #FF9800;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
         }
 
         /* Footer */
