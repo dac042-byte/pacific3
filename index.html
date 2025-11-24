@@ -453,12 +453,12 @@
         .calendar-item {
             background: var(--light-bg);
             border-left: 4px solid var(--secondary-blue);
-            padding: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-md);
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: var(--spacing-md);
+            grid-template-columns: 100px 1fr;
+            gap: var(--spacing-sm);
             align-items: center;
             transition: var(--transition);
         }
@@ -472,31 +472,33 @@
         .calendar-date {
             background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
             color: var(--text-light);
-            padding: var(--spacing-sm);
-            border-radius: 12px;
+            padding: 0.5rem;
+            border-radius: 8px;
             text-align: center;
             box-shadow: 0 2px 8px rgba(21,101,192,0.2);
         }
 
         .calendar-date .month {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             opacity: 0.9;
         }
 
         .calendar-date .day {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             display: block;
         }
 
         .calendar-info h4 {
             color: var(--primary-blue);
-            margin-bottom: var(--spacing-xs);
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
         }
 
         .calendar-info p {
             color: var(--gray-medium);
+            font-size: 0.9rem;
         }
 
         /* Testimonials */
@@ -858,8 +860,7 @@
         <!-- Academic Calendar -->
         <section id="academic-calendar">
             <div class="section-header">
-                <h2 class="lang-en">Academic Calendar 2025-2026</h2>
-                <h2 class="lang-es hidden">Calendario Académico 2025-2026</h2>
+                <h2>Academic Calendar 2025-2026</h2>
                 <p class="lang-en">Important dates for the upcoming academic year</p>
                 <p class="lang-es hidden">Fechas importantes para el próximo año académico</p>
             </div>
