@@ -67,11 +67,18 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        .header-top {
-            background-color: var(--dark-bg);
-            padding: var(--spacing-xs) 0;
+        header.scrolled {
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+
+        header.hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+            pointer-events: none;
         }
 
         .header-top-content {
@@ -132,12 +139,17 @@
         nav {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-md);
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: var(--spacing-md);
-            flex-wrap: wrap;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
         }
 
         .logo {
@@ -711,29 +723,23 @@
 
     <!-- Header -->
     <header>
-        <div class="header-top">
-            <div class="header-top-content">
-                <div class="contact-info">
-                    <span>📞 Irvine: (949) 123-4567</span>
-                    <span>✉️ <a href="mailto:irvine@pacificacademy.org">irvine@pacificacademy.org</a></span>
-                </div>
+        <nav role="navigation" aria-label="Main navigation">
+            <a href="#" class="logo" aria-label="Pacific Academy Home">
+                <img src="https://static.wixstatic.com/media/f9330d_f3ad70ca8c8b47e0ae02de018d3e644b~mv2.png/v1/fill/w_200,h_48,al_c,q_85,usm_0.66_1.00_0.01/f9330d_f3ad70ca8c8b47e0ae02de018d3e644b~mv2.png" alt="Pacific Academy Logo">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-menu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#admissions">Admissions</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
                 <div class="language-switcher">
                     <button class="lang-btn active" onclick="switchLanguage('en')" aria-label="Switch to English">EN</button>
                     <button class="lang-btn" onclick="switchLanguage('es')" aria-label="Cambiar a español">ES</button>
                 </div>
             </div>
-        </div>
-        <nav role="navigation" aria-label="Main navigation">
-            <a href="#" class="logo" aria-label="Pacific Academy Home">
-                <img src="https://static.wixstatic.com/media/f9330d_f3ad70ca8c8b47e0ae02de018d3e644b~mv2.png/v1/fill/w_200,h_48,al_c,q_85,usm_0.66_1.00_0.01/f9330d_f3ad70ca8c8b47e0ae02de018d3e644b~mv2.png" alt="Pacific Academy Logo">
-            </a>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#admissions">Admissions</a></li>
-                <li><a href="#academics">Academics</a></li>
-                <li><a href="#programs">Programs</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
         </nav>
     </header>
 
@@ -1059,6 +1065,29 @@
 
     <!-- JavaScript -->
     <script>
+        // Header scroll fade effect
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Fade out when scrolling down, fade in when scrolling up
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+
+            lastScrollTop = scrollTop;
+        });
+
         // Carousel functionality
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.carousel-slide');
