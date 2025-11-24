@@ -501,7 +501,7 @@
         /* Testimonials */
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: var(--spacing-md);
             margin-top: var(--spacing-lg);
         }
@@ -683,6 +683,10 @@
             .calendar-item {
                 grid-template-columns: 1fr;
                 text-align: center;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
             }
 
             .testimonial-card::before {
